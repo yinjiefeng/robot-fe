@@ -1,0 +1,60 @@
+@point-height: 50px;
+@round-width: 12px;
+@station-name-height: 25px;
+@point-border-color: green;
+@station-border-color: gray;
+
+.measure-grid {
+  overflow: hidden;
+  width: 100%;
+  .mg-wrap {
+    padding: 0 10px;
+    transition: transform 1s;
+    //transform: translateX(-200px);
+    .mg-station {
+      display: inline-block;
+      width: 200px;
+      .mg-station-name {
+        margin: 0 0 0 -7px;
+        display: block;
+        height: @station-name-height;
+      }
+      .mg-pos {
+        width: 100%;
+        height: @point-height;
+        border: 1px solid @point-border-color;
+        border-bottom: 0;
+        border-right: 0;
+        position: relative;
+        &:last-of-type {
+          border-bottom: 0;
+          border-left: 0;
+          border-top: 2px solid @station-border-color;
+        }
+        &:first-of-type {
+          border-top: 2px solid @station-border-color;
+        }
+        .mg-point {
+          position: absolute;
+          top: -(@round-width / 2);
+          left: -(@round-width / 2);
+          display: inline-block;
+          width: @round-width;
+          height: @round-width;
+          border-radius: 50%;
+          background: #fff;
+          border: 2px solid @station-border-color;
+        }
+      }
+      &:last-of-type {
+        .mg-pos {
+          border: 0;
+          border-left: 1px solid @point-border-color;
+          &:last-of-type {
+            border-left: 0;
+          }
+        }
+      }
+    }
+  }
+}
